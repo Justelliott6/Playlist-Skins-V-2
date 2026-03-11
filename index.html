@@ -7,10 +7,10 @@
   <style>
     :root {
       --bg: #050607;
-      --panel: #0f131a;
-      --panel-border: #202632;
+      --panel: #10141c;
+      --border: #232b37;
       --text: #f4f6fb;
-      --muted: #9ca7ba;
+      --muted: #9aa7bb;
       --accent: #ffd82b;
       --accent-dark: #201400;
       --slot-top: 19.4%;
@@ -24,54 +24,54 @@
 
     body {
       margin: 0;
-      background: radial-gradient(circle at top, #0b0f16 0%, var(--bg) 42%);
+      background: radial-gradient(circle at top, #0b1018 0%, #050607 45%);
       color: var(--text);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       min-height: 100vh;
     }
 
     .wrap {
-      width: min(1120px, calc(100% - 24px));
+      width: min(1100px, calc(100% - 24px));
       margin: 0 auto;
       padding: 18px 0 40px;
     }
 
     header {
       text-align: center;
-      padding: 8px 8px 18px;
+      padding: 4px 8px 18px;
     }
 
     header h1 {
       margin: 0;
       font-size: clamp(2rem, 5vw, 4rem);
       line-height: 1;
-      color: var(--accent);
-      letter-spacing: 0.06em;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
       font-weight: 900;
     }
 
     header p {
       margin: 10px 0 0;
-      color: #d8dde7;
+      color: #d9dfe9;
       font-size: 1rem;
     }
 
     .panel {
-      background: linear-gradient(180deg, rgba(16,20,28,0.96), rgba(12,16,23,0.98));
-      border: 1px solid var(--panel-border);
-      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(16,20,28,0.98), rgba(11,14,20,0.98));
+      border: 1px solid var(--border);
+      border-radius: 18px;
       padding: 18px;
       margin-bottom: 20px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.34);
     }
 
     .panel h2 {
       margin: 0 0 14px;
-      color: #a9baff;
-      font-size: 1.02rem;
+      color: #a7b7ff;
+      font-size: 1rem;
       text-transform: uppercase;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.12em;
     }
 
     .grid {
@@ -80,29 +80,28 @@
       gap: 14px;
     }
 
-    .field label {
+    label {
       display: block;
       margin-bottom: 6px;
       font-size: 0.92rem;
-      color: #d9deeb;
+      color: #dde4f3;
     }
 
     input[type="text"],
     select,
     textarea {
       width: 100%;
-      background: #05070b;
+      background: #06080d;
       color: var(--text);
-      border: 1px solid #313949;
+      border: 1px solid #313948;
       border-radius: 10px;
       padding: 11px 12px;
       font-size: 0.95rem;
       outline: none;
     }
 
-    input[type="text"]::placeholder,
-    textarea::placeholder {
-      color: #738097;
+    input[type="text"]::placeholder {
+      color: #748197;
     }
 
     .actions {
@@ -113,7 +112,6 @@
     }
 
     button {
-      appearance: none;
       border: 0;
       border-radius: 999px;
       padding: 10px 18px;
@@ -122,7 +120,7 @@
       font-weight: 800;
       font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       cursor: pointer;
     }
 
@@ -132,14 +130,14 @@
     }
 
     button.ghost {
-      background: #202938;
+      background: #222c3a;
       color: #eef2ff;
     }
 
     .hint {
+      margin-top: 10px;
       color: var(--muted);
       font-size: 0.86rem;
-      margin-top: 10px;
       line-height: 1.45;
     }
 
@@ -147,7 +145,7 @@
       margin-top: 10px;
       min-height: 22px;
       color: #8ef0ba;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
     }
 
     .preview-shell {
@@ -155,10 +153,10 @@
       width: min(900px, 100%);
       margin: 0 auto;
       aspect-ratio: 1 / 1;
-      border-radius: 24px;
+      border-radius: 22px;
       overflow: hidden;
       background: #000;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.45);
     }
 
     .skin-canvas {
@@ -174,9 +172,8 @@
       height: var(--slot-height);
       border-radius: var(--slot-radius);
       overflow: hidden;
-      z-index: 12;
-      background: rgba(0,0,0,0.16);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+      z-index: 10;
+      background: rgba(0,0,0,0.18);
     }
 
     .slot iframe,
@@ -187,15 +184,40 @@
       display: block;
     }
 
-    .link-card {
-      background: linear-gradient(90deg, rgba(12,14,19,0.92), rgba(28,34,47,0.9));
+    .badge {
+      position: absolute;
+      z-index: 11;
+      top: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .skin-badge {
+      left: 16px;
+      background: rgba(0,0,0,0.48);
       color: #fff;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .platform-badge {
+      right: 16px;
+      background: rgba(255,216,43,0.95);
+      color: #201400;
+    }
+
+    .link-card {
+      background: linear-gradient(90deg, rgba(10,12,18,0.95), rgba(30,36,48,0.92));
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding: 10px 14px;
-      font-size: clamp(0.72rem, 1.4vw, 0.95rem);
+      gap: 10px;
+      padding: 8px 12px;
+      color: #fff;
+      font-size: clamp(0.72rem, 1.5vw, 0.92rem);
     }
 
     .link-card .meta {
@@ -203,107 +225,64 @@
       text-align: left;
     }
 
-    .link-card .title {
-      font-weight: 800;
+    .link-card .title,
+    .link-card .sub {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    .link-card .title {
+      font-weight: 800;
     }
 
     .link-card .sub {
-      color: #b9c3d8;
+      color: #b8c4d8;
       font-size: 0.92em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .link-card a {
-      color: #07170f;
-      background: #37eca1;
       text-decoration: none;
-      font-weight: 800;
+      background: #37eca1;
+      color: #062114;
       padding: 8px 12px;
       border-radius: 999px;
+      font-weight: 800;
       white-space: nowrap;
     }
 
-    .skin-name-badge,
-    .platform-badge {
-      position: absolute;
-      z-index: 13;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      backdrop-filter: blur(8px);
-    }
-
-    .skin-name-badge {
-      top: 16px;
-      left: 16px;
-      background: rgba(0,0,0,0.45);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    .platform-badge {
-      top: 16px;
-      right: 16px;
-      background: rgba(255,216,43,0.92);
-      color: #201400;
-    }
-
-    .code-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
     textarea {
-      min-height: 180px;
+      min-height: 90px;
       resize: vertical;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       line-height: 1.45;
       font-size: 0.82rem;
     }
 
-    .mini-label {
-      margin: 0 0 8px;
-      font-size: 0.92rem;
-      color: #dfe6f5;
-    }
-
-    /* --------- SKINS --------- */
+    /* SKINS */
 
     .skin {
       position: absolute;
       inset: 0;
     }
 
-    /* 1 Retro Boombox */
-    .skin-boombox {
+    .boombox {
       background:
-        radial-gradient(circle at 15% 57%, #20140c 0 9%, transparent 10%),
-        radial-gradient(circle at 84% 57%, #20140c 0 9%, transparent 10%),
-        linear-gradient(180deg, rgba(0,0,0,0) 0 14%, #573523 14% 20%, transparent 20% 100%),
-        linear-gradient(180deg, #5d211f 0%, #d84f53 45%, #c24a46 100%);
+        linear-gradient(180deg, rgba(0,0,0,0) 0 13%, #6c4b2e 13% 18%, transparent 18% 100%),
+        linear-gradient(180deg, #7f2b2a 0%, #d55257 50%, #c44545 100%);
     }
-
-    .skin-boombox::before {
+    .boombox::before {
       content: "";
       position: absolute;
-      inset: 7% 8% auto 8%;
+      left: 9%;
+      right: 9%;
+      top: 12%;
       height: 10%;
-      border-radius: 12px;
-      background:
-        linear-gradient(180deg, #25170d 0, #7a562f 30%, #1a1009 100%);
-      box-shadow: 0 0 0 3px rgba(255, 223, 170, 0.15);
+      border-radius: 10px;
+      background: linear-gradient(180deg, #20140d, #6d4b27 35%, #1a110b);
+      box-shadow: 0 0 0 3px rgba(250,220,160,0.12);
     }
-
-    .skin-boombox::after {
+    .boombox::after {
       content: "BRING BACK\A ROCK 101";
       white-space: pre;
       position: absolute;
@@ -312,184 +291,104 @@
       font-size: clamp(2rem, 7vw, 6rem);
       line-height: 0.92;
       font-weight: 1000;
-      letter-spacing: -0.05em;
-      color: #f7d46a;
-      text-shadow: 0 4px 0 rgba(0,0,0,0.25);
+      color: #f8d56a;
     }
-
-    .skin-boombox .speaker-left,
-    .skin-boombox .speaker-right {
+    .boombox .speaker-l,
+    .boombox .speaker-r {
       position: absolute;
-      top: 48%;
+      top: 49%;
       width: 24%;
       aspect-ratio: 1;
       border-radius: 50%;
+      background: radial-gradient(circle at center, #352114 0 9%, #17100a 10% 24%, #0a0705 25% 100%);
+      border: 5px solid #bd8f72;
+      box-shadow: inset 0 0 0 3px #46291d;
+    }
+    .boombox .speaker-l { left: 5%; }
+    .boombox .speaker-r { right: 5%; }
+
+    .hiphop {
       background:
-        radial-gradient(circle at center, #3a2617 0 10%, #23170f 11% 22%, #0f0906 23% 100%);
-      border: 5px solid #c59174;
-      box-shadow: inset 0 0 0 3px #3f231a;
+        linear-gradient(135deg, rgba(255,0,122,0.18), transparent 30%),
+        linear-gradient(225deg, rgba(0,255,255,0.12), transparent 30%),
+        linear-gradient(180deg, #101010 0%, #1a1412 100%);
     }
-
-    .skin-boombox .speaker-left { left: 5%; }
-    .skin-boombox .speaker-right { right: 5%; }
-
-    .skin-boombox .small-grill {
-      position: absolute;
-      right: 8%;
-      bottom: 13%;
-      width: 16%;
-      height: 15%;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #15130d, #040505);
-      border: 4px solid #7a5e2d;
-    }
-
-    /* 2 Hip Hop */
-    .skin-hiphop {
-      background:
-        linear-gradient(135deg, rgba(255,0,140,0.18), transparent 26%),
-        linear-gradient(225deg, rgba(0,255,255,0.12), transparent 34%),
-        linear-gradient(180deg, #121212 0%, #19100f 100%);
-    }
-
-    .skin-hiphop::before {
+    .hiphop::before {
       content: "STREET\A HEAT";
       white-space: pre;
       position: absolute;
       left: 16%;
-      top: 35%;
-      font-size: clamp(2.2rem, 8vw, 7rem);
+      top: 36%;
+      font-size: clamp(2rem, 8vw, 7rem);
       line-height: 0.88;
       font-weight: 1000;
-      color: #ffdb2f;
+      color: #ffdd2f;
       transform: rotate(-8deg);
-      text-shadow:
-        4px 4px 0 #ff007a,
-        8px 8px 0 rgba(0, 255, 255, 0.45);
+      text-shadow: 4px 4px 0 #ff0077, 8px 8px 0 rgba(0,255,255,0.45);
     }
-
-    .skin-hiphop .speaker-left,
-    .skin-hiphop .speaker-right {
+    .hiphop .speaker-l,
+    .hiphop .speaker-r {
       position: absolute;
       top: 50%;
       width: 26%;
       aspect-ratio: 1;
       border-radius: 50%;
-      background:
-        radial-gradient(circle at center, #171717 0 10%, #090909 11% 26%, #1d1d1d 27% 100%);
-      border: 7px solid #454545;
-      box-shadow: 0 0 0 4px #111, inset 0 0 30px rgba(255,0,122,0.25);
+      background: radial-gradient(circle at center, #161616 0 10%, #0a0a0a 11% 26%, #1b1b1b 27% 100%);
+      border: 6px solid #484848;
+      box-shadow: 0 0 0 4px #111;
     }
+    .hiphop .speaker-l { left: 4%; }
+    .hiphop .speaker-r { right: 4%; }
 
-    .skin-hiphop .speaker-left { left: 4%; }
-    .skin-hiphop .speaker-right { right: 4%; }
-
-    .skin-hiphop .graffiti {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 22%, rgba(255,0,122,0.55) 0 3%, transparent 4%),
-        radial-gradient(circle at 70% 24%, rgba(0,255,255,0.55) 0 2.5%, transparent 3.5%),
-        radial-gradient(circle at 82% 69%, rgba(255,216,43,0.45) 0 2.5%, transparent 3.5%),
-        radial-gradient(circle at 15% 80%, rgba(0,255,153,0.45) 0 2.5%, transparent 3.5%);
-      mix-blend-mode: screen;
+    .vinyl {
+      background: linear-gradient(180deg, #4c3119 0%, #725029 100%);
     }
-
-    /* 3 Vinyl */
-    .skin-vinyl {
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), transparent 20%),
-        linear-gradient(180deg, #4a2f18 0%, #6d4825 100%);
-    }
-
-    .skin-vinyl::before {
+    .vinyl::before {
       content: "";
       position: absolute;
-      inset: 58% auto auto 50%;
+      left: 50%;
+      top: 56%;
       width: 42%;
       aspect-ratio: 1;
       transform: translateX(-50%);
       border-radius: 50%;
-      background:
-        radial-gradient(circle at center, #d5b25d 0 5%, #101010 6% 18%, #1e1e1e 19% 27%, #0e0e0e 28% 100%);
-      box-shadow:
-        0 0 0 7px rgba(0,0,0,0.25),
-        inset 0 0 0 2px rgba(255,255,255,0.05);
+      background: radial-gradient(circle at center, #d4b05e 0 5%, #111 6% 18%, #1f1f1f 19% 27%, #090909 28% 100%);
+      box-shadow: 0 0 0 7px rgba(0,0,0,0.24);
     }
-
-    .skin-vinyl::after {
+    .vinyl::after {
       content: "NEEDLE DROP";
       position: absolute;
       left: 50%;
-      top: 12%;
+      top: 13%;
       transform: translateX(-50%);
-      font-size: clamp(1.4rem, 3.3vw, 3rem);
+      font-size: clamp(1.4rem, 3.5vw, 3rem);
       font-weight: 900;
       letter-spacing: 0.1em;
       color: #f8dfa3;
     }
 
-    .skin-vinyl .tonearm {
-      position: absolute;
-      right: 18%;
-      top: 48%;
-      width: 18%;
-      height: 2%;
-      background: linear-gradient(90deg, #ddd3b2, #8a7b51);
-      transform: rotate(28deg);
-      transform-origin: right center;
-      border-radius: 999px;
-    }
-
-    /* 4 Neon */
-    .skin-neon {
+    .neon {
       background:
-        radial-gradient(circle at 50% 18%, rgba(0,255,255,0.18), transparent 22%),
-        radial-gradient(circle at 20% 78%, rgba(255,0,255,0.12), transparent 25%),
-        linear-gradient(180deg, #0c1023 0%, #120a25 100%);
+        radial-gradient(circle at 50% 18%, rgba(0,255,255,0.18), transparent 20%),
+        radial-gradient(circle at 20% 80%, rgba(255,0,255,0.12), transparent 25%),
+        linear-gradient(180deg, #0b1025 0%, #150c29 100%);
     }
-
-    .skin-neon::before {
+    .neon::before {
       content: "NIGHT PULSE";
       position: absolute;
       left: 50%;
       top: 13%;
       transform: translateX(-50%);
-      font-size: clamp(1.8rem, 4vw, 3.4rem);
+      font-size: clamp(1.7rem, 4vw, 3.3rem);
       font-weight: 1000;
-      color: #b9f7ff;
-      text-shadow:
-        0 0 6px #00f0ff,
-        0 0 16px #00f0ff,
-        0 0 30px rgba(255,0,255,0.55);
+      color: #bcf7ff;
+      text-shadow: 0 0 6px #00f0ff, 0 0 16px #00f0ff, 0 0 28px rgba(255,0,255,0.55);
     }
 
-    .skin-neon .bars {
-      position: absolute;
-      left: 12%;
-      right: 12%;
-      bottom: 12%;
-      height: 18%;
-      display: flex;
-      align-items: flex-end;
-      gap: 1.1%;
+    .cassette {
+      background: linear-gradient(180deg, #73604f 0%, #4f4034 100%);
     }
-
-    .skin-neon .bars span {
-      flex: 1;
-      border-radius: 10px 10px 0 0;
-      background: linear-gradient(180deg, #00f0ff, #ff2fff);
-      box-shadow: 0 0 14px rgba(0,240,255,0.35);
-    }
-
-    /* 5 Cassette */
-    .skin-cassette {
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.03), transparent 15%),
-        linear-gradient(180deg, #6f5b4a 0%, #4f3f33 100%);
-    }
-
-    .skin-cassette::before {
+    .cassette::before {
       content: "";
       position: absolute;
       left: 16%;
@@ -500,11 +399,10 @@
       background:
         radial-gradient(circle at 25% 50%, #111 0 9%, transparent 10%),
         radial-gradient(circle at 75% 50%, #111 0 9%, transparent 10%),
-        linear-gradient(180deg, #d7ceb8 0%, #e9ddc1 50%, #d2c2a1 100%);
-      box-shadow: inset 0 0 0 8px #31261d, 0 10px 20px rgba(0,0,0,0.25);
+        linear-gradient(180deg, #d7ceb8 0%, #eadfc5 55%, #d1c19f 100%);
+      box-shadow: inset 0 0 0 8px #31261d, 0 10px 20px rgba(0,0,0,0.22);
     }
-
-    .skin-cassette::after {
+    .cassette::after {
       content: "TAPE RUN";
       position: absolute;
       left: 50%;
@@ -514,16 +412,6 @@
       font-weight: 1000;
       letter-spacing: 0.12em;
       color: #f2e0a9;
-    }
-
-    .skin-cassette .label-band {
-      position: absolute;
-      left: 26%;
-      top: 41%;
-      width: 48%;
-      height: 9%;
-      background: linear-gradient(90deg, #3d1a15, #78301f);
-      border-radius: 6px;
     }
 
     @media (max-width: 860px) {
@@ -536,16 +424,9 @@
       .wrap {
         width: calc(100% - 14px);
       }
-
       .panel {
         padding: 14px;
-        border-radius: 16px;
       }
-
-      .actions {
-        gap: 8px;
-      }
-
       button {
         width: 100%;
       }
@@ -556,17 +437,17 @@
   <div class="wrap">
     <header>
       <h1>Playlist Skins</h1>
-      <p>Paste a music link, pick a skin, and turn it into something worth sharing.</p>
+      <p>Paste a music link, pick a skin, and make something worth sharing.</p>
     </header>
 
     <section class="panel">
       <h2>1. Build your player</h2>
       <div class="grid">
-        <div class="field">
+        <div>
           <label for="musicUrl">Music link</label>
-          <input id="musicUrl" type="text" placeholder="Spotify, SoundCloud, YouTube, Apple Music, or Amazon Music link" />
+          <input id="musicUrl" type="text" placeholder="Spotify, SoundCloud, YouTube, Apple Music, or Amazon Music link">
         </div>
-        <div class="field">
+        <div>
           <label for="skinSelect">Skin</label>
           <select id="skinSelect">
             <option value="boombox">Retro Boombox</option>
@@ -576,7 +457,7 @@
             <option value="cassette">Tape Run</option>
           </select>
         </div>
-        <div class="field">
+        <div>
           <label for="platformMode">Platform mode</label>
           <select id="platformMode">
             <option value="auto">Auto detect</option>
@@ -596,39 +477,29 @@
       </div>
 
       <div class="hint">
-        Spotify, SoundCloud, and YouTube try to embed directly. Apple Music and Amazon Music fall back to a styled open-link card.
+        This build focuses on the engine working first. Spotify, SoundCloud, and YouTube try to embed. Apple and Amazon use clean open-link cards.
       </div>
       <div class="status" id="statusMsg"></div>
     </section>
 
     <section class="panel">
       <h2>2. Preview</h2>
-      <div class="preview-shell" id="previewShell">
+      <div class="preview-shell">
         <div class="skin-canvas" id="skinCanvas"></div>
-        <div class="skin-name-badge" id="skinBadge">Retro Boombox</div>
-        <div class="platform-badge" id="platformBadge">Spotify</div>
+        <div class="badge skin-badge" id="skinBadge">Retro Boombox</div>
+        <div class="badge platform-badge" id="platformBadge">Spotify</div>
         <div class="slot" id="mediaSlot"></div>
       </div>
       <div class="hint">
-        Each skin has its own media slot position. That means you stop nudging one tuner bar around for three days like it’s cursed.
+        Once this version is behaving, we add your real art skins and the embed-code generator.
       </div>
     </section>
 
     <section class="panel">
-      <h2>3. Copy code</h2>
-      <div class="code-row">
-        <div>
-          <p class="mini-label">Embed code</p>
-          <textarea id="embedCode" readonly></textarea>
-        </div>
-        <div>
-          <p class="mini-label">Share link</p>
-          <textarea id="shareCode" readonly></textarea>
-        </div>
-      </div>
+      <h2>3. Share link</h2>
+      <textarea id="shareCode" readonly></textarea>
       <div class="actions">
-        <button id="copyEmbedBtn">Copy Embed Code</button>
-        <button id="copyShareCodeBtn" class="secondary">Copy Share Link</button>
+        <button id="copyShareCodeBtn">Copy Share Link</button>
       </div>
     </section>
   </div>
@@ -644,74 +515,9 @@
     const skinCanvas = document.getElementById('skinCanvas');
     const skinBadge = document.getElementById('skinBadge');
     const platformBadge = document.getElementById('platformBadge');
-    const embedCode = document.getElementById('embedCode');
     const shareCode = document.getElementById('shareCode');
-    const copyEmbedBtn = document.getElementById('copyEmbedBtn');
     const copyShareCodeBtn = document.getElementById('copyShareCodeBtn');
     const statusMsg = document.getElementById('statusMsg');
-
-    const skins = {
-      boombox: {
-        name: 'Retro Boombox',
-        slot: { top: '19.4%', left: '11%', width: '69.8%', height: '4.9%', radius: '8px' },
-        render: () => `
-          <div class="skin skin-boombox">
-            <div class="speaker-left"></div>
-            <div class="speaker-right"></div>
-            <div class="small-grill"></div>
-          </div>
-        `
-      },
-      hiphop: {
-        name: 'Street Heat',
-        slot: { top: '17.8%', left: '10.5%', width: '73.5%', height: '6.2%', radius: '10px' },
-        render: () => `
-          <div class="skin skin-hiphop">
-            <div class="speaker-left"></div>
-            <div class="speaker-right"></div>
-            <div class="graffiti"></div>
-          </div>
-        `
-      },
-      vinyl: {
-        name: 'Needle Drop',
-        slot: { top: '18%', left: '14%', width: '72%', height: '6%', radius: '999px' },
-        render: () => `
-          <div class="skin skin-vinyl">
-            <div class="tonearm"></div>
-          </div>
-        `
-      },
-      neon: {
-        name: 'Night Pulse',
-        slot: { top: '18.2%', left: '10.8%', width: '72%', height: '5.8%', radius: '12px' },
-        render: () => `
-          <div class="skin skin-neon">
-            <div class="bars">
-              <span style="height:34%"></span>
-              <span style="height:80%"></span>
-              <span style="height:48%"></span>
-              <span style="height:92%"></span>
-              <span style="height:62%"></span>
-              <span style="height:76%"></span>
-              <span style="height:38%"></span>
-              <span style="height:88%"></span>
-              <span style="height:56%"></span>
-              <span style="height:70%"></span>
-            </div>
-          </div>
-        `
-      },
-      cassette: {
-        name: 'Tape Run',
-        slot: { top: '40.8%', left: '25.8%', width: '48.4%', height: '8.5%', radius: '6px' },
-        render: () => `
-          <div class="skin skin-cassette">
-            <div class="label-band"></div>
-          </div>
-        `
-      }
-    };
 
     const defaults = {
       spotify: 'https://open.spotify.com/playlist/2MmIJTeFeehQ3uo1PFydLh',
@@ -719,6 +525,34 @@
       youtube: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       apple: 'https://music.apple.com/us/album/texas-hold-em/1729450626?i=1729450627',
       amazon: 'https://music.amazon.com/'
+    };
+
+    const skins = {
+      boombox: {
+        name: 'Retro Boombox',
+        slot: { top: '19.4%', left: '11%', width: '69.8%', height: '4.9%', radius: '8px' },
+        html: '<div class="skin boombox"><div class="speaker-l"></div><div class="speaker-r"></div></div>'
+      },
+      hiphop: {
+        name: 'Street Heat',
+        slot: { top: '17.8%', left: '10.5%', width: '73.5%', height: '6.2%', radius: '10px' },
+        html: '<div class="skin hiphop"><div class="speaker-l"></div><div class="speaker-r"></div></div>'
+      },
+      vinyl: {
+        name: 'Needle Drop',
+        slot: { top: '17.5%', left: '14%', width: '72%', height: '6%', radius: '999px' },
+        html: '<div class="skin vinyl"></div>'
+      },
+      neon: {
+        name: 'Night Pulse',
+        slot: { top: '18.2%', left: '10.8%', width: '72%', height: '5.8%', radius: '12px' },
+        html: '<div class="skin neon"></div>'
+      },
+      cassette: {
+        name: 'Tape Run',
+        slot: { top: '40.8%', left: '25.8%', width: '48.4%', height: '8.5%', radius: '6px' },
+        html: '<div class="skin cassette"></div>'
+      }
     };
 
     function detectPlatform(url) {
@@ -736,85 +570,99 @@
     }
 
     function escapeHtml(str) {
-      return (str || '').replace(/[&<>"']/g, m => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-      }[m]));
+      return (str || '').replace(/[&<>"']/g, function(m) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        }[m];
+      });
     }
 
     function spotifyEmbed(url) {
       const match = url.match(/spotify\.com\/(playlist|album|track|episode|show)\/([A-Za-z0-9]+)/i);
       if (!match) return null;
-      const type = match[1];
-      const id = match[2];
-      return `https://open.spotify.com/embed/${type}/${id}?utm_source=generator`;
+      return 'https://open.spotify.com/embed/' + match[1] + '/' + match[2] + '?utm_source=generator';
     }
 
     function youtubeEmbed(url) {
       let id = null;
-      const watch = url.match(/[?&]v=([A-Za-z0-9_-]{11})/);
-      const short = url.match(/youtu\.be\/([A-Za-z0-9_-]{11})/);
-      const embed = url.match(/youtube\.com\/embed\/([A-Za-z0-9_-]{11})/);
-      if (watch) id = watch[1];
-      else if (short) id = short[1];
-      else if (embed) id = embed[1];
+      let m = url.match(/[?&]v=([A-Za-z0-9_-]{11})/);
+      if (m) id = m[1];
+      if (!id) {
+        m = url.match(/youtu\.be\/([A-Za-z0-9_-]{11})/);
+        if (m) id = m[1];
+      }
+      if (!id) {
+        m = url.match(/youtube\.com\/embed\/([A-Za-z0-9_-]{11})/);
+        if (m) id = m[1];
+      }
       if (!id) return null;
-      return `https://www.youtube.com/embed/${id}`;
+      return 'https://www.youtube.com/embed/' + id;
     }
 
     function soundcloudEmbed(url) {
       if (!url.includes('soundcloud.com')) return null;
-      return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
+      return 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url) + '&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false';
     }
 
-    function buildSlotContent(platform, url) {
+    function linkCard(title, url) {
+      return (
+        '<div class="link-card">' +
+          '<div class="meta">' +
+            '<div class="title">' + escapeHtml(title) + '</div>' +
+            '<div class="sub">' + escapeHtml(url) + '</div>' +
+          '</div>' +
+          '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">Open</a>' +
+        '</div>'
+      );
+    }
+
+    function slotContent(platform, url) {
       if (platform === 'spotify') {
         const embed = spotifyEmbed(url);
-        if (!embed) return { html: linkCard(platform, url, 'Could not embed Spotify link'), embeddable: false };
-        return { html: `<iframe src="${embed}" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`, embeddable: true };
+        if (embed) {
+          return {
+            html: '<iframe src="' + embed + '" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+            mode: 'embed'
+          };
+        }
+        return { html: linkCard('Open on Spotify', url), mode: 'card' };
       }
 
       if (platform === 'youtube') {
         const embed = youtubeEmbed(url);
-        if (!embed) return { html: linkCard(platform, url, 'Could not embed YouTube link'), embeddable: false };
-        return { html: `<iframe src="${embed}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>`, embeddable: true };
+        if (embed) {
+          return {
+            html: '<iframe src="' + embed + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>',
+            mode: 'embed'
+          };
+        }
+        return { html: linkCard('Open on YouTube', url), mode: 'card' };
       }
 
       if (platform === 'soundcloud') {
         const embed = soundcloudEmbed(url);
-        if (!embed) return { html: linkCard(platform, url, 'Could not embed SoundCloud link'), embeddable: false };
-        return { html: `<iframe src="${embed}" allow="autoplay" loading="lazy"></iframe>`, embeddable: true };
+        if (embed) {
+          return {
+            html: '<iframe src="' + embed + '" allow="autoplay" loading="lazy"></iframe>',
+            mode: 'embed'
+          };
+        }
+        return { html: linkCard('Open on SoundCloud', url), mode: 'card' };
       }
 
-      if (platform === 'apple') {
-        return { html: linkCard(platform, url, 'Open on Apple Music'), embeddable: false };
-      }
+      if (platform === 'apple') return { html: linkCard('Open on Apple Music', url), mode: 'card' };
+      if (platform === 'amazon') return { html: linkCard('Open on Amazon Music', url), mode: 'card' };
 
-      if (platform === 'amazon') {
-        return { html: linkCard(platform, url, 'Open on Amazon Music'), embeddable: false };
-      }
-
-      return { html: linkCard('link', url, 'Open music link'), embeddable: false };
+      return { html: linkCard('Open music link', url), mode: 'card' };
     }
 
-    function linkCard(platform, url, labelText) {
-      return `
-        <div class="link-card">
-          <div class="meta">
-            <div class="title">${escapeHtml(labelText)}</div>
-            <div class="sub">${escapeHtml(url)}</div>
-          </div>
-          <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">Open</a>
-        </div>
-      `;
-    }
-
-    function applySkin(skinKey) {
-      const skin = skins[skinKey] || skins.boombox;
-      skinCanvas.innerHTML = skin.render();
+    function applySkin(key) {
+      const skin = skins[key] || skins.boombox;
+      skinCanvas.innerHTML = skin.html;
       skinBadge.textContent = skin.name;
       document.documentElement.style.setProperty('--slot-top', skin.slot.top);
       document.documentElement.style.setProperty('--slot-left', skin.slot.left);
@@ -831,60 +679,32 @@
       return share.toString();
     }
 
-    function buildEmbedCode(url, skinKey, mode) {
-      const platform = mode === 'auto' ? detectPlatform(url) : mode;
-      const skin = skins[skinKey] || skins.boombox;
-      const slot = skin.slot;
-      const content = buildSlotContent(platform, url).html;
-      const skinMarkup = skin.render();
-
-      return `<!-- Playlist Skins V3 Widget -->
-<div style="position:relative;width:900px;max-width:100%;margin:40px auto;aspect-ratio:1/1;overflow:hidden;border-radius:24px;background:#000;box-shadow:0 16px 40px rgba(0,0,0,.45);">
-  <div style="position:absolute;inset:0;">${skinMarkup}</div>
-  <div style="position:absolute;top:16px;left:16px;z-index:13;padding:8px 12px;border-radius:999px;font-weight:800;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(0,0,0,.45);color:#fff;border:1px solid rgba(255,255,255,.15);font-family:system-ui,sans-serif;">${escapeHtml(skin.name)}</div>
-  <div style="position:absolute;top:16px;right:16px;z-index:13;padding:8px 12px;border-radius:999px;font-weight:800;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,216,43,.92);color:#201400;font-family:system-ui,sans-serif;">${escapeHtml(platform || 'link')}</div>
-  <div style="position:absolute;top:${slot.top};left:${slot.left};width:${slot.width};height:${slot.height};border-radius:${slot.radius};overflow:hidden;z-index:12;background:rgba(0,0,0,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);">
-    ${content}
-  </div>
-</div>`;
-    }
-
     function refresh() {
       let url = musicUrlInput.value.trim();
       const skinKey = skinSelect.value;
       const mode = platformMode.value;
 
       if (!url) {
-        const fallbackPlatform = mode === 'auto' ? 'spotify' : mode;
-        url = defaults[fallbackPlatform] || defaults.spotify;
+        const fallback = mode === 'auto' ? 'spotify' : mode;
+        url = defaults[fallback] || defaults.spotify;
         musicUrlInput.value = url;
       }
 
       const platform = getPlatform(url);
       applySkin(skinKey);
-      platformBadge.textContent = platform === 'unknown' ? 'Link' : platform;
+      platformBadge.textContent = platform === 'unknown' ? 'link' : platform;
 
-      const slotContent = buildSlotContent(platform, url);
-      mediaSlot.innerHTML = slotContent.html;
+      const media = slotContent(platform, url);
+      mediaSlot.innerHTML = media.html;
 
       const share = buildShareUrl(url, skinKey, mode);
       shareCode.value = share;
-      embedCode.value = buildEmbedCode(url, skinKey, mode);
-
       window.history.replaceState({}, '', share);
 
-      statusMsg.textContent = slotContent.embeddable
-        ? `Loaded ${platform} in ${skins[skinKey].name}.`
-        : `${platform === 'unknown' ? 'Link' : platform} is using a styled open-link card in ${skins[skinKey].name}.`;
-    }
-
-    async function copyText(text, okMessage) {
-      try {
-        await navigator.clipboard.writeText(text);
-        statusMsg.textContent = okMessage;
-      } catch {
-        statusMsg.textContent = 'Clipboard blocked. Long-press or select and copy manually.';
-      }
+      statusMsg.textContent =
+        media.mode === 'embed'
+          ? 'Loaded ' + platform + ' in ' + skins[skinKey].name + '.'
+          : 'Using a styled link card for ' + (platform === 'unknown' ? 'this link' : platform) + ' in ' + skins[skinKey].name + '.';
     }
 
     function hydrateFromUrl() {
@@ -898,29 +718,34 @@
       if (mode) platformMode.value = mode;
     }
 
+    async function copyText(text, message) {
+      try {
+        await navigator.clipboard.writeText(text);
+        statusMsg.textContent = message;
+      } catch (e) {
+        statusMsg.textContent = 'Clipboard blocked. Copy manually from the box below.';
+      }
+    }
+
     applyBtn.addEventListener('click', refresh);
     skinSelect.addEventListener('change', refresh);
     platformMode.addEventListener('change', refresh);
 
-    copyShareBtn.addEventListener('click', () => {
+    copyShareBtn.addEventListener('click', function() {
       copyText(shareCode.value, 'Share link copied.');
     });
 
-    openLinkBtn.addEventListener('click', () => {
+    copyShareCodeBtn.addEventListener('click', function() {
+      copyText(shareCode.value, 'Share link copied.');
+    });
+
+    openLinkBtn.addEventListener('click', function() {
       const url = musicUrlInput.value.trim();
       if (!url) {
         statusMsg.textContent = 'Paste a music link first.';
         return;
       }
       window.open(url, '_blank', 'noopener,noreferrer');
-    });
-
-    copyEmbedBtn.addEventListener('click', () => {
-      copyText(embedCode.value, 'Embed code copied.');
-    });
-
-    copyShareCodeBtn.addEventListener('click', () => {
-      copyText(shareCode.value, 'Share link copied.');
     });
 
     hydrateFromUrl();
