@@ -1,755 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Playlist Skins V3</title>
-  <style>
-    :root {
-      --bg: #050607;
-      --panel: #10141c;
-      --border: #232b37;
-      --text: #f4f6fb;
-      --muted: #9aa7bb;
-      --accent: #ffd82b;
-      --accent-dark: #201400;
-      --slot-top: 19.4%;
-      --slot-left: 11%;
-      --slot-width: 69.8%;
-      --slot-height: 4.9%;
-      --slot-radius: 8px;
-    }
 
-    * { box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    body {
-      margin: 0;
-      background: radial-gradient(circle at top, #0b1018 0%, #050607 45%);
-      color: var(--text);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      min-height: 100vh;
-    }
+<title>Playlist Skins</title>
 
-    .wrap {
-      width: min(1100px, calc(100% - 24px));
-      margin: 0 auto;
-      padding: 18px 0 40px;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    header {
-      text-align: center;
-      padding: 4px 8px 18px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
-    header h1 {
-      margin: 0;
-      font-size: clamp(2rem, 5vw, 4rem);
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      font-weight: 900;
-    }
+<style>
 
-    header p {
-      margin: 10px 0 0;
-      color: #d9dfe9;
-      font-size: 1rem;
-    }
+body{
+background:#06080d;
+font-family:"Inter",sans-serif;
+color:#f5f6fa;
+margin:0;
+padding:0;
+}
 
-    .panel {
-      background: linear-gradient(180deg, rgba(16,20,28,0.98), rgba(11,14,20,0.98));
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.34);
-    }
+.wrapper{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
 
-    .panel h2 {
-      margin: 0 0 14px;
-      color: #a7b7ff;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
+h1{
+font-family:"Anton",sans-serif;
+font-size:60px;
+letter-spacing:4px;
+color:#ffd82b;
+margin:0;
+text-align:center;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1.6fr 0.9fr 0.8fr;
-      gap: 14px;
-    }
+.subtitle{
+text-align:center;
+margin-bottom:30px;
+color:#9aa6bd;
+}
 
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.92rem;
-      color: #dde4f3;
-    }
+.panel{
+background:#10141c;
+border-radius:14px;
+padding:18px;
+margin-bottom:18px;
+border:1px solid #232b37;
+}
 
-    input[type="text"],
-    select,
-    textarea {
-      width: 100%;
-      background: #06080d;
-      color: var(--text);
-      border: 1px solid #313948;
-      border-radius: 10px;
-      padding: 11px 12px;
-      font-size: 0.95rem;
-      outline: none;
-    }
+.panel h2{
+font-size:14px;
+letter-spacing:2px;
+color:#7fa0ff;
+margin-top:0;
+}
 
-    input[type="text"]::placeholder {
-      color: #748197;
-    }
+input,select{
+width:100%;
+padding:10px;
+border-radius:8px;
+border:1px solid #2c3647;
+background:#05070c;
+color:white;
+}
 
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
+.controls{
+display:flex;
+gap:10px;
+margin-top:14px;
+flex-wrap:wrap;
+}
 
-    button {
-      border: 0;
-      border-radius: 999px;
-      padding: 10px 18px;
-      background: var(--accent);
-      color: var(--accent-dark);
-      font-weight: 800;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-    }
+button{
+background:#ffd82b;
+border:none;
+padding:10px 18px;
+border-radius:999px;
+font-weight:700;
+cursor:pointer;
+}
 
-    button.secondary {
-      background: #37eca1;
-      color: #062114;
-    }
+button.secondary{
+background:#32eaa0;
+}
 
-    button.ghost {
-      background: #222c3a;
-      color: #eef2ff;
-    }
+button.dark{
+background:#2c3647;
+color:white;
+}
 
-    .hint {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.45;
-    }
+.preview{
+width:680px;
+max-width:100%;
+margin:auto;
+position:relative;
+border-radius:18px;
+overflow:hidden;
+}
 
-    .status {
-      margin-top: 10px;
-      min-height: 22px;
-      color: #8ef0ba;
-      font-size: 0.92rem;
-    }
+.preview img{
+width:100%;
+display:block;
+}
 
-    .preview-shell {
-      position: relative;
-      width: min(900px, 100%);
-      margin: 0 auto;
-      aspect-ratio: 1 / 1;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #000;
-      box-shadow: 0 18px 42px rgba(0,0,0,0.45);
-    }
+.player-slot{
+position:absolute;
 
-    .skin-canvas {
-      position: absolute;
-      inset: 0;
-    }
+top:24%;
+left:13%;
+width:62%;
+height:60px;
 
-    .slot {
-      position: absolute;
-      top: var(--slot-top);
-      left: var(--slot-left);
-      width: var(--slot-width);
-      height: var(--slot-height);
-      border-radius: var(--slot-radius);
-      overflow: hidden;
-      z-index: 10;
-      background: rgba(0,0,0,0.18);
-    }
+overflow:hidden;
+border-radius:8px;
+}
 
-    .slot iframe,
-    .slot .link-card {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
+.player-slot iframe{
+position:absolute;
 
-    .badge {
-      position: absolute;
-      z-index: 11;
-      top: 16px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
+top:-140px;
+left:0;
 
-    .skin-badge {
-      left: 16px;
-      background: rgba(0,0,0,0.48);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
+width:100%;
+height:300px;
+border:none;
+}
 
-    .platform-badge {
-      right: 16px;
-      background: rgba(255,216,43,0.95);
-      color: #201400;
-    }
+.badge{
+position:absolute;
+top:10px;
+padding:6px 12px;
+font-size:12px;
+border-radius:999px;
+}
 
-    .link-card {
-      background: linear-gradient(90deg, rgba(10,12,18,0.95), rgba(30,36,48,0.92));
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 8px 12px;
-      color: #fff;
-      font-size: clamp(0.72rem, 1.5vw, 0.92rem);
-    }
+.skin-badge{
+left:10px;
+background:#000000a0;
+}
 
-    .link-card .meta {
-      min-width: 0;
-      text-align: left;
-    }
+.platform-badge{
+right:10px;
+background:#ffd82b;
+color:black;
+}
 
-    .link-card .title,
-    .link-card .sub {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.sharebox{
+width:100%;
+background:#05070c;
+border:1px solid #2c3647;
+border-radius:8px;
+padding:10px;
+font-size:12px;
+margin-top:10px;
+}
 
-    .link-card .title {
-      font-weight: 800;
-    }
-
-    .link-card .sub {
-      color: #b8c4d8;
-      font-size: 0.92em;
-    }
-
-    .link-card a {
-      text-decoration: none;
-      background: #37eca1;
-      color: #062114;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      line-height: 1.45;
-      font-size: 0.82rem;
-    }
-
-    /* SKINS */
-
-    .skin {
-      position: absolute;
-      inset: 0;
-    }
-
-    .boombox {
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0) 0 13%, #6c4b2e 13% 18%, transparent 18% 100%),
-        linear-gradient(180deg, #7f2b2a 0%, #d55257 50%, #c44545 100%);
-    }
-    .boombox::before {
-      content: "";
-      position: absolute;
-      left: 9%;
-      right: 9%;
-      top: 12%;
-      height: 10%;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #20140d, #6d4b27 35%, #1a110b);
-      box-shadow: 0 0 0 3px rgba(250,220,160,0.12);
-    }
-    .boombox::after {
-      content: "BRING BACK\A ROCK 101";
-      white-space: pre;
-      position: absolute;
-      left: 23%;
-      top: 38%;
-      font-size: clamp(2rem, 7vw, 6rem);
-      line-height: 0.92;
-      font-weight: 1000;
-      color: #f8d56a;
-    }
-    .boombox .speaker-l,
-    .boombox .speaker-r {
-      position: absolute;
-      top: 49%;
-      width: 24%;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #352114 0 9%, #17100a 10% 24%, #0a0705 25% 100%);
-      border: 5px solid #bd8f72;
-      box-shadow: inset 0 0 0 3px #46291d;
-    }
-    .boombox .speaker-l { left: 5%; }
-    .boombox .speaker-r { right: 5%; }
-
-    .hiphop {
-      background:
-        linear-gradient(135deg, rgba(255,0,122,0.18), transparent 30%),
-        linear-gradient(225deg, rgba(0,255,255,0.12), transparent 30%),
-        linear-gradient(180deg, #101010 0%, #1a1412 100%);
-    }
-    .hiphop::before {
-      content: "STREET\A HEAT";
-      white-space: pre;
-      position: absolute;
-      left: 16%;
-      top: 36%;
-      font-size: clamp(2rem, 8vw, 7rem);
-      line-height: 0.88;
-      font-weight: 1000;
-      color: #ffdd2f;
-      transform: rotate(-8deg);
-      text-shadow: 4px 4px 0 #ff0077, 8px 8px 0 rgba(0,255,255,0.45);
-    }
-    .hiphop .speaker-l,
-    .hiphop .speaker-r {
-      position: absolute;
-      top: 50%;
-      width: 26%;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #161616 0 10%, #0a0a0a 11% 26%, #1b1b1b 27% 100%);
-      border: 6px solid #484848;
-      box-shadow: 0 0 0 4px #111;
-    }
-    .hiphop .speaker-l { left: 4%; }
-    .hiphop .speaker-r { right: 4%; }
-
-    .vinyl {
-      background: linear-gradient(180deg, #4c3119 0%, #725029 100%);
-    }
-    .vinyl::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 56%;
-      width: 42%;
-      aspect-ratio: 1;
-      transform: translateX(-50%);
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #d4b05e 0 5%, #111 6% 18%, #1f1f1f 19% 27%, #090909 28% 100%);
-      box-shadow: 0 0 0 7px rgba(0,0,0,0.24);
-    }
-    .vinyl::after {
-      content: "NEEDLE DROP";
-      position: absolute;
-      left: 50%;
-      top: 13%;
-      transform: translateX(-50%);
-      font-size: clamp(1.4rem, 3.5vw, 3rem);
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      color: #f8dfa3;
-    }
-
-    .neon {
-      background:
-        radial-gradient(circle at 50% 18%, rgba(0,255,255,0.18), transparent 20%),
-        radial-gradient(circle at 20% 80%, rgba(255,0,255,0.12), transparent 25%),
-        linear-gradient(180deg, #0b1025 0%, #150c29 100%);
-    }
-    .neon::before {
-      content: "NIGHT PULSE";
-      position: absolute;
-      left: 50%;
-      top: 13%;
-      transform: translateX(-50%);
-      font-size: clamp(1.7rem, 4vw, 3.3rem);
-      font-weight: 1000;
-      color: #bcf7ff;
-      text-shadow: 0 0 6px #00f0ff, 0 0 16px #00f0ff, 0 0 28px rgba(255,0,255,0.55);
-    }
-
-    .cassette {
-      background: linear-gradient(180deg, #73604f 0%, #4f4034 100%);
-    }
-    .cassette::before {
-      content: "";
-      position: absolute;
-      left: 16%;
-      top: 31%;
-      width: 68%;
-      height: 34%;
-      border-radius: 18px;
-      background:
-        radial-gradient(circle at 25% 50%, #111 0 9%, transparent 10%),
-        radial-gradient(circle at 75% 50%, #111 0 9%, transparent 10%),
-        linear-gradient(180deg, #d7ceb8 0%, #eadfc5 55%, #d1c19f 100%);
-      box-shadow: inset 0 0 0 8px #31261d, 0 10px 20px rgba(0,0,0,0.22);
-    }
-    .cassette::after {
-      content: "TAPE RUN";
-      position: absolute;
-      left: 50%;
-      top: 18%;
-      transform: translateX(-50%);
-      font-size: clamp(1.5rem, 3.8vw, 3rem);
-      font-weight: 1000;
-      letter-spacing: 0.12em;
-      color: #f2e0a9;
-    }
-
-    @media (max-width: 860px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .wrap {
-        width: calc(100% - 14px);
-      }
-      .panel {
-        padding: 14px;
-      }
-      button {
-        width: 100%;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Playlist Skins</h1>
-      <p>Paste a music link, pick a skin, and make something worth sharing.</p>
-    </header>
 
-    <section class="panel">
-      <h2>1. Build your player</h2>
-      <div class="grid">
-        <div>
-          <label for="musicUrl">Music link</label>
-          <input id="musicUrl" type="text" placeholder="Spotify, SoundCloud, YouTube, Apple Music, or Amazon Music link">
-        </div>
-        <div>
-          <label for="skinSelect">Skin</label>
-          <select id="skinSelect">
-            <option value="boombox">Retro Boombox</option>
-            <option value="hiphop">Street Heat</option>
-            <option value="vinyl">Needle Drop</option>
-            <option value="neon">Night Pulse</option>
-            <option value="cassette">Tape Run</option>
-          </select>
-        </div>
-        <div>
-          <label for="platformMode">Platform mode</label>
-          <select id="platformMode">
-            <option value="auto">Auto detect</option>
-            <option value="spotify">Spotify</option>
-            <option value="soundcloud">SoundCloud</option>
-            <option value="youtube">YouTube</option>
-            <option value="apple">Apple Music</option>
-            <option value="amazon">Amazon Music</option>
-          </select>
-        </div>
-      </div>
+<div class="wrapper">
 
-      <div class="actions">
-        <button id="applyBtn">Generate Player</button>
-        <button id="copyShareBtn" class="secondary">Copy Share Link</button>
-        <button id="openLinkBtn" class="ghost">Open Music Link</button>
-      </div>
+<h1>PLAYLIST SKINS</h1>
+<div class="subtitle">Pick a skin, paste a music link, build something worth sharing.</div>
 
-      <div class="hint">
-        This build focuses on the engine working first. Spotify, SoundCloud, and YouTube try to embed. Apple and Amazon use clean open-link cards.
-      </div>
-      <div class="status" id="statusMsg"></div>
-    </section>
+<div class="panel">
 
-    <section class="panel">
-      <h2>2. Preview</h2>
-      <div class="preview-shell">
-        <div class="skin-canvas" id="skinCanvas"></div>
-        <div class="badge skin-badge" id="skinBadge">Retro Boombox</div>
-        <div class="badge platform-badge" id="platformBadge">Spotify</div>
-        <div class="slot" id="mediaSlot"></div>
-      </div>
-      <div class="hint">
-        Once this version is behaving, we add your real art skins and the embed-code generator.
-      </div>
-    </section>
+<h2>1. BUILD YOUR PLAYER</h2>
 
-    <section class="panel">
-      <h2>3. Share link</h2>
-      <textarea id="shareCode" readonly></textarea>
-      <div class="actions">
-        <button id="copyShareCodeBtn">Copy Share Link</button>
-      </div>
-    </section>
-  </div>
+<label>Music Link</label>
+<input id="music" placeholder="Paste Spotify / YouTube / SoundCloud link">
 
-  <script>
-    const musicUrlInput = document.getElementById('musicUrl');
-    const skinSelect = document.getElementById('skinSelect');
-    const platformMode = document.getElementById('platformMode');
-    const applyBtn = document.getElementById('applyBtn');
-    const copyShareBtn = document.getElementById('copyShareBtn');
-    const openLinkBtn = document.getElementById('openLinkBtn');
-    const mediaSlot = document.getElementById('mediaSlot');
-    const skinCanvas = document.getElementById('skinCanvas');
-    const skinBadge = document.getElementById('skinBadge');
-    const platformBadge = document.getElementById('platformBadge');
-    const shareCode = document.getElementById('shareCode');
-    const copyShareCodeBtn = document.getElementById('copyShareCodeBtn');
-    const statusMsg = document.getElementById('statusMsg');
+<label style="margin-top:12px;">Skin</label>
 
-    const defaults = {
-      spotify: 'https://open.spotify.com/playlist/2MmIJTeFeehQ3uo1PFydLh',
-      soundcloud: 'https://soundcloud.com/forss/flickermood',
-      youtube: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-      apple: 'https://music.apple.com/us/album/texas-hold-em/1729450626?i=1729450627',
-      amazon: 'https://music.amazon.com/'
-    };
+<select id="skin">
+<option value="rock">Bring Back Rock 101</option>
+<option value="hiphop">Street Heat</option>
+<option value="vinyl">Needle Drop</option>
+<option value="neon">Night Pulse</option>
+<option value="tape">Tape Run</option>
+</select>
 
-    const skins = {
-      boombox: {
-        name: 'Retro Boombox',
-        slot: { top: '19.4%', left: '11%', width: '69.8%', height: '4.9%', radius: '8px' },
-        html: '<div class="skin boombox"><div class="speaker-l"></div><div class="speaker-r"></div></div>'
-      },
-      hiphop: {
-        name: 'Street Heat',
-        slot: { top: '17.8%', left: '10.5%', width: '73.5%', height: '6.2%', radius: '10px' },
-        html: '<div class="skin hiphop"><div class="speaker-l"></div><div class="speaker-r"></div></div>'
-      },
-      vinyl: {
-        name: 'Needle Drop',
-        slot: { top: '17.5%', left: '14%', width: '72%', height: '6%', radius: '999px' },
-        html: '<div class="skin vinyl"></div>'
-      },
-      neon: {
-        name: 'Night Pulse',
-        slot: { top: '18.2%', left: '10.8%', width: '72%', height: '5.8%', radius: '12px' },
-        html: '<div class="skin neon"></div>'
-      },
-      cassette: {
-        name: 'Tape Run',
-        slot: { top: '40.8%', left: '25.8%', width: '48.4%', height: '8.5%', radius: '6px' },
-        html: '<div class="skin cassette"></div>'
-      }
-    };
+<div class="controls">
 
-    function detectPlatform(url) {
-      const u = (url || '').toLowerCase();
-      if (u.includes('spotify.com')) return 'spotify';
-      if (u.includes('soundcloud.com')) return 'soundcloud';
-      if (u.includes('music.youtube.com') || u.includes('youtube.com') || u.includes('youtu.be')) return 'youtube';
-      if (u.includes('music.apple.com')) return 'apple';
-      if (u.includes('amazon.com/music') || u.includes('music.amazon.')) return 'amazon';
-      return 'unknown';
-    }
+<button onclick="generate()">Generate Player</button>
 
-    function getPlatform(url) {
-      return platformMode.value === 'auto' ? detectPlatform(url) : platformMode.value;
-    }
+<button class="secondary" onclick="copy()">Copy Share Link</button>
 
-    function escapeHtml(str) {
-      return (str || '').replace(/[&<>"']/g, function(m) {
-        return {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#39;'
-        }[m];
-      });
-    }
+<button class="dark" onclick="openlink()">Open Music Link</button>
 
-    function spotifyEmbed(url) {
-      const match = url.match(/spotify\.com\/(playlist|album|track|episode|show)\/([A-Za-z0-9]+)/i);
-      if (!match) return null;
-      return 'https://open.spotify.com/embed/' + match[1] + '/' + match[2] + '?utm_source=generator';
-    }
+</div>
 
-    function youtubeEmbed(url) {
-      let id = null;
-      let m = url.match(/[?&]v=([A-Za-z0-9_-]{11})/);
-      if (m) id = m[1];
-      if (!id) {
-        m = url.match(/youtu\.be\/([A-Za-z0-9_-]{11})/);
-        if (m) id = m[1];
-      }
-      if (!id) {
-        m = url.match(/youtube\.com\/embed\/([A-Za-z0-9_-]{11})/);
-        if (m) id = m[1];
-      }
-      if (!id) return null;
-      return 'https://www.youtube.com/embed/' + id;
-    }
+</div>
 
-    function soundcloudEmbed(url) {
-      if (!url.includes('soundcloud.com')) return null;
-      return 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url) + '&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false';
-    }
+<div class="panel">
 
-    function linkCard(title, url) {
-      return (
-        '<div class="link-card">' +
-          '<div class="meta">' +
-            '<div class="title">' + escapeHtml(title) + '</div>' +
-            '<div class="sub">' + escapeHtml(url) + '</div>' +
-          '</div>' +
-          '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">Open</a>' +
-        '</div>'
-      );
-    }
+<h2>2. PREVIEW</h2>
 
-    function slotContent(platform, url) {
-      if (platform === 'spotify') {
-        const embed = spotifyEmbed(url);
-        if (embed) {
-          return {
-            html: '<iframe src="' + embed + '" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
-            mode: 'embed'
-          };
-        }
-        return { html: linkCard('Open on Spotify', url), mode: 'card' };
-      }
+<div class="preview">
 
-      if (platform === 'youtube') {
-        const embed = youtubeEmbed(url);
-        if (embed) {
-          return {
-            html: '<iframe src="' + embed + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>',
-            mode: 'embed'
-          };
-        }
-        return { html: linkCard('Open on YouTube', url), mode: 'card' };
-      }
+<img id="skinimg" src="https://primary.jwwb.nl/public/g/u/b/temp-lwmvpgonevezulioxwug/untitled-design-high.png">
 
-      if (platform === 'soundcloud') {
-        const embed = soundcloudEmbed(url);
-        if (embed) {
-          return {
-            html: '<iframe src="' + embed + '" allow="autoplay" loading="lazy"></iframe>',
-            mode: 'embed'
-          };
-        }
-        return { html: linkCard('Open on SoundCloud', url), mode: 'card' };
-      }
+<div class="badge skin-badge" id="skinname">ROCK 101</div>
 
-      if (platform === 'apple') return { html: linkCard('Open on Apple Music', url), mode: 'card' };
-      if (platform === 'amazon') return { html: linkCard('Open on Amazon Music', url), mode: 'card' };
+<div class="badge platform-badge">SPOTIFY</div>
 
-      return { html: linkCard('Open music link', url), mode: 'card' };
-    }
+<div class="player-slot" id="slot"></div>
 
-    function applySkin(key) {
-      const skin = skins[key] || skins.boombox;
-      skinCanvas.innerHTML = skin.html;
-      skinBadge.textContent = skin.name;
-      document.documentElement.style.setProperty('--slot-top', skin.slot.top);
-      document.documentElement.style.setProperty('--slot-left', skin.slot.left);
-      document.documentElement.style.setProperty('--slot-width', skin.slot.width);
-      document.documentElement.style.setProperty('--slot-height', skin.slot.height);
-      document.documentElement.style.setProperty('--slot-radius', skin.slot.radius);
-    }
+</div>
 
-    function buildShareUrl(url, skin, mode) {
-      const share = new URL(window.location.href);
-      share.searchParams.set('music', url);
-      share.searchParams.set('skin', skin);
-      share.searchParams.set('mode', mode);
-      return share.toString();
-    }
+</div>
 
-    function refresh() {
-      let url = musicUrlInput.value.trim();
-      const skinKey = skinSelect.value;
-      const mode = platformMode.value;
+<div class="panel">
 
-      if (!url) {
-        const fallback = mode === 'auto' ? 'spotify' : mode;
-        url = defaults[fallback] || defaults.spotify;
-        musicUrlInput.value = url;
-      }
+<h2>3. SHARE LINK</h2>
 
-      const platform = getPlatform(url);
-      applySkin(skinKey);
-      platformBadge.textContent = platform === 'unknown' ? 'link' : platform;
+<div class="sharebox" id="share"></div>
 
-      const media = slotContent(platform, url);
-      mediaSlot.innerHTML = media.html;
+</div>
 
-      const share = buildShareUrl(url, skinKey, mode);
-      shareCode.value = share;
-      window.history.replaceState({}, '', share);
+</div>
 
-      statusMsg.textContent =
-        media.mode === 'embed'
-          ? 'Loaded ' + platform + ' in ' + skins[skinKey].name + '.'
-          : 'Using a styled link card for ' + (platform === 'unknown' ? 'this link' : platform) + ' in ' + skins[skinKey].name + '.';
-    }
+<script>
 
-    function hydrateFromUrl() {
-      const params = new URLSearchParams(window.location.search);
-      const music = params.get('music');
-      const skin = params.get('skin');
-      const mode = params.get('mode');
+const skins={
+rock:"https://primary.jwwb.nl/public/g/u/b/temp-lwmvpgonevezulioxwug/untitled-design-high.png",
+hiphop:"https://images.unsplash.com/photo-1548092372-0d1bd40894a3",
+vinyl:"https://images.unsplash.com/photo-1511379938547-c1f69419868d",
+neon:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+tape:"https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4"
+}
 
-      if (music) musicUrlInput.value = music;
-      if (skin && skins[skin]) skinSelect.value = skin;
-      if (mode) platformMode.value = mode;
-    }
+function detect(url){
 
-    async function copyText(text, message) {
-      try {
-        await navigator.clipboard.writeText(text);
-        statusMsg.textContent = message;
-      } catch (e) {
-        statusMsg.textContent = 'Clipboard blocked. Copy manually from the box below.';
-      }
-    }
+if(url.includes("spotify")) return "spotify"
+if(url.includes("youtube")) return "youtube"
+if(url.includes("soundcloud")) return "soundcloud"
 
-    applyBtn.addEventListener('click', refresh);
-    skinSelect.addEventListener('change', refresh);
-    platformMode.addEventListener('change', refresh);
+return "link"
 
-    copyShareBtn.addEventListener('click', function() {
-      copyText(shareCode.value, 'Share link copied.');
-    });
+}
 
-    copyShareCodeBtn.addEventListener('click', function() {
-      copyText(shareCode.value, 'Share link copied.');
-    });
+function spotify(url){
 
-    openLinkBtn.addEventListener('click', function() {
-      const url = musicUrlInput.value.trim();
-      if (!url) {
-        statusMsg.textContent = 'Paste a music link first.';
-        return;
-      }
-      window.open(url, '_blank', 'noopener,noreferrer');
-    });
+let id=url.split("playlist/")[1]
 
-    hydrateFromUrl();
-    refresh();
-  </script>
+if(!id)return null
+
+id=id.split("?")[0]
+
+return "https://open.spotify.com/embed/playlist/"+id
+
+}
+
+function generate(){
+
+let url=document.getElementById("music").value
+
+let skin=document.getElementById("skin").value
+
+document.getElementById("skinimg").src=skins[skin]
+
+document.getElementById("skinname").innerText=skin.toUpperCase()
+
+let platform=detect(url)
+
+let slot=document.getElementById("slot")
+
+slot.innerHTML=""
+
+if(platform=="spotify"){
+
+let embed=spotify(url)
+
+slot.innerHTML=`<iframe src="${embed}"></iframe>`
+
+}else{
+
+slot.innerHTML=`<div style="background:#111;padding:10px;border-radius:6px">Open Link</div>`
+
+}
+
+let share=location.origin+location.pathname+"?music="+encodeURIComponent(url)+"&skin="+skin
+
+document.getElementById("share").innerText=share
+
+}
+
+function copy(){
+
+navigator.clipboard.writeText(document.getElementById("share").innerText)
+
+}
+
+function openlink(){
+
+window.open(document.getElementById("music").value)
+
+}
+
+</script>
+
 </body>
 </html>
